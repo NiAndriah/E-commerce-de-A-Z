@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block carousel %}Home - Super-Boutique{% endblock %}
+
+{% block content %}
+
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h3 class="featurette-heading">Une équipe de professionel <span class="text-muted">au grand savoir-faire .</span></h3>
+            <p class="lead">Nous proposons sur notre boutique toutes les pépites du vrai! made in France. Vous trouverez des produits innovants et de qualité. C'est bien plus qu'une boutique, c'est une démarche éco-citoyenne.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="{{ asset('img/right.jpg') }}" class="img-fluid" alt="Un savoir-faire"></img>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h3 class="featurette-heading">Venez à nous rencontrer dans nos différents <span class="text-muted">Produits</span></h3>
+            <p class="lead">Vous découvrirez des produits insolites. Super, c'est bien plus qu'une boutique.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="{{ asset('img/left.jpg') }}" class="img-fluid" alt="Une boutique ouverte toute l'année"></img>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+    
+    <!-- /END THE FEATURETTES -->
+
+{% endblock %}

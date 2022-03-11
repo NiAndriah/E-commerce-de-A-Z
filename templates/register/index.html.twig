@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistration - Super-Boutique{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/register.css') }}"/>
+    {{ form_start(form) }}
+        <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="{{ asset('img/logo_white.png')}}" alt=""/>
+                <h3>Bienvenue</h3>
+                <p>Veuillez remplir le fiche d'enregistrement pour s'inscrire</p>
+                <input type="submit" name="" value="Enregistrer"/><br/>
+            </div>
+            <div class="col-md-9 register-right">
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">Boutique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile" aria-selected="false">E-Commerce</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Fiche d'inscritpion</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.lastname, {'label' : false,
+                                        'attr' : {'placeholder' : 'Votre nom'}
+                                        })
+                                     }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(form.firstname, {'label' : false,
+                                        'attr' : {'placeholder' : 'Votre prénoms'}
+                                        })
+                                     }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(form.password) }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_row(form.email, {'label' : false, 
+                                        'attr' : {'placeholder' : 'Votre adresse e-mail'}
+                                        }) 
+                                    }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(form.phone, {'label' : false, 
+                                        'attr' : {'placeholder' : 'Téléphone'}
+                                        }) 
+                                    }}
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option class="hidden"  selected disabled>Veuillez sélectionner votre question de sécurité</option>
+                                        <option>Quelle est ta date de naissance?</option>
+                                        <option>Quel est votre ancien numéro de téléphone</option>
+                                        <option>Quel est le nom de ton animal?</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Répondez à votre question" value="" />
+                                </div>
+                                {{ form_row(form.submit) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    {{ form_end(form) }}
+    {% endblock %}

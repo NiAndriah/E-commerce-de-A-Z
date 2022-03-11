@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande - Super-Boutique{% endblock %}
+
+{% block content %}
+
+    <h1>Mes commandes en détails</h1>
+    <hr>       
+    <a href="{{ path('account_order') }}">Retour</a>
+    <table class="table mt-4">
+        <thead>
+            <th scope="col">Passé le</th>
+            <th scope="col">Produits</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Quantités</th>
+            <th scope="col">Total</th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            {% for order in orderDetails %}
+                <tr>
+                    <td><span class="badge badge-secondary">{{ order.myorder.createdAt|date("m/d/Y") }}</span></td>
+                    <td>{{ order.product }}</td>
+                    <td>{{ order.price / 100 }} Ar</td>    
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.total / 100 }} Ar</td>
+                </tr>       
+            {% endfor %} 
+        </tbody>
+    </table>       
+
+{% endblock %}

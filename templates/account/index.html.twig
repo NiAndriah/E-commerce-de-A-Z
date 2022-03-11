@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte - Super-Boutique{% endblock %}
+
+{% block content %}
+    <h1>Mon compte</h1>
+        Bienvenue {{ app.user.firstname }} dans votre compte.
+    <br/>
+        C'est dans cet espace que vous allez pouvoir 
+        gérer toutes vos informations personnelles.      
+    <hr>
+    <div class="row">
+        {% if is_granted ('ROLE_USER') %}
+            <div class="col-md-4">
+                <div class="account-item text-center">
+                    <a href="{{ path('account_order') }}">
+                        <img src="{{ asset('img/Commande.png') }}" class="icon" alt="Command"/><br/>
+                        Mes commandes
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+        {% if is_granted ('ROLE_ADMIN') %}
+            <div class="col-md-4">
+                <div class="account-item text-center">
+                    <img src="{{ asset('img/backOffice.png') }}" class="icon" alt="Password"/><br/>
+                    <a href="{{ path('admin') }}">Accéder au backoffice</a>
+                </div>
+            </div>
+        {% endif %} 
+        <div class="col-md-4">
+                <div class="account-item text-center">
+                    <a href="{{ path('account_address') }}">
+                        <img src="{{ asset('img/Address.png') }}" class="icon" alt="Address"/><br/>        
+                        Gérer mes adresses
+                    </a>
+                </div>
+            </div>   
+        <div class="col-md-4">
+            <div class="account-item text-center">
+                <a href="{{ path('account_password') }}">
+                    <img src="{{ asset('img/Password.png') }}" class="icon" alt="Password"/><br/>
+                    Modifier mon mot de passe
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

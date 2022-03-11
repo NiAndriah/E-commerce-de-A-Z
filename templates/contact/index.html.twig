@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - Super-Boutique{% endblock %}
+
+{% block content %}
+    <h3 class="text-center">Merci de nous avoir contacté</h3>
+    <hr>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/contact.css') }}">
+    <div class="row text-color">
+        <div class="col-md-5 identity">
+            {% set formHtml %}
+                {% for admin in Admin.addresses %}
+                    <h5>{{ admin }}</h5>
+                    <p>{{ admin.phone }}</p>
+                {% endfor %}
+            {% endset %}
+            {{ formHtml|replace({'[br]' : '<br>'})|raw }}
+            <p>{{ Admin.email }}</p>
+        </div><hr>
+        <div class="col-md-5">
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}

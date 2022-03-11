@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes - Super-Boutique{% endblock %}
+
+{% block content %}
+    <h1>Mes commandes</h1>
+    Bienvenue {{ app.user.firstname }} dans votre compte.<br/>
+    C'est dans cet espace que vous allez pouvoir 
+    gérer toutes vos commandes.  
+    <hr>        
+    <a href="{{ path('account') }}">Retour</a>
+    {% if order|length == 0 %}
+        <hr>
+        <p class="text-center">
+            Vous n'avez pas encore passé de la commande sur La Super-Boutique.
+        </p>
+    {% else %}
+    <table class="table mt-4">
+        <thead>
+            <th scope="col">Passé le</th>
+            <th scope="col">Produits</th>
+            <th scope="col">Carrières</th>
+            <th scope="col">Sommes à payer</th>
+            <th scope="col">Payée</th>
+        </thead>
+        <tbody>
+            {% for order in order %}
+                <tr>
+                    <td><span class="badge badge-secondary">{{ order.createdAt|date("m/d/Y") }}</span></td>
+                    <td>{{ order.orderDetails|length }}</td>
+                    <td>{{ order.carriername }}</td>
+                    <td>{{ ((order.carrierPrice + order.getTotal) / 100)|number_format(2, ',', '.') }} Ar</td>
+                    <td>{% if (order.isPaid == 1) %}
+                            ✅
+                        {% else %}
+                            <p style="color:red">X</p>   
+                        {% endif %}
+                    </td>
+                    <td class="text-right"><a href="{{ path('account_orderDetails', {'id' : order.id} ) }}">Voir en détails</a></td>
+                </tr>       
+            {% endfor %} 
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}

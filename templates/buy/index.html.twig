@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}buy - Super-Boutique{% endblock %}
+
+{% block content %}
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+            <h1>Merci beaucoup à vous</h1>
+            <p>Veuillez envoyer le payement sur Mvola</p>
+            {% set formHtml %}
+            <p>Numéro de compte: {{ agence.phone }}</p>
+            <p>Adresse e-mail: {{ agence.email }}</p>
+                {% for agence in agence.addresses %}
+                    <h5>{{ agence }}</h5>
+                {% endfor %}
+            {% endset %}
+            {{ formHtml|replace({'[br]' : '<br>'})|raw }}
+        </div>
+    </div>
+    <hr/>
+{% endblock %}
